@@ -102,13 +102,13 @@ extension OrderStatusExtension on OrderTrackerState {
       case OrderTrackerState.orderPlaced:
         return 'Your Order has been placed😀';
       case OrderTrackerState.orderAccepted:
-        return 'Your order has been accepted and is been processed';
+        return 'Your order has been accepted and is been processed💯';
       case OrderTrackerState.orderPickUpInProgress:
-        return 'Your order has been picked up';
+        return 'Your order has been picked up😎';
       case OrderTrackerState.orderOnTheWayToCustomer:
-        return 'Your order is on the way to you';
+        return 'Your order is on the way to you🚗';
       case OrderTrackerState.orderArrived:
-        return 'Your order has arrived at your location';
+        return 'Your order has arrived at your location💃';
       case OrderTrackerState.orderDelivered:
         return 'Your order has been delivered!🥳';
       case OrderTrackerState.unknown:
