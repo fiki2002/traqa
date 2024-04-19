@@ -1,0 +1,57 @@
+name: traqa
+description: "A new Flutter project."
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+
+  fpdart: ^1.1.0
+
+  # For responsiveness of sizes across various screens
+  flutter_screenutil: ^5.9.0
+  get_it: ^7.7.0
+
+  # Just for beautification of the UI
+  carousel_slider: ^4.2.1
+
+  # For Firebase Services
+  firebase_core: ^2.30.0
+  firebase_auth: ^4.19.2
+  google_sign_in: ^6.2.1
+
+  # State management
+  provider: ^6.1.2
+  another_flushbar: ^1.12.30
+  ably: ^0.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+
+  fonts:
+    - family: Shantell Sans
+      fonts:
+        - asset: assets/fonts/ShantellSans-Regular.ttf
+        - asset: assets/fonts/ShantellSans-Italic.ttf
+          style: italic
+
+  

@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "1090744554259",
+    "project_id": "traqa-2c398",
+    "storage_bucket": "traqa-2c398.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090744554259:android:119571ae09ea2559d5c0e6",
+        "android_client_info": {
+          "package_name": "com.example.eden_task"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090744554259-75tkjvuqvom4ea8078peoth443ilo1sl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.eden_task",
+            "certificate_hash": "33e3d6e4fecb3c7a9a568f0ce6dc4894b7ecd2df"
+          }
+        },
+        {
+          "client_id": "1090744554259-kkarug4gphdjpdss4glr7qk9g9gak5hc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo3Xrkw94djzZXpt9-RE2pkHXJRtGpHTI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090744554259-kkarug4gphdjpdss4glr7qk9g9gak5hc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1090744554259-6hnkv0lp9p8i83pqvhcbrpkvui5p8g4q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.traqa"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090744554259:android:3833517a7deb0d9ad5c0e6",
+        "android_client_info": {
+          "package_name": "com.example.traqa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090744554259-kkarug4gphdjpdss4glr7qk9g9gak5hc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo3Xrkw94djzZXpt9-RE2pkHXJRtGpHTI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090744554259-kkarug4gphdjpdss4glr7qk9g9gak5hc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1090744554259-6hnkv0lp9p8i83pqvhcbrpkvui5p8g4q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.traqa"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
