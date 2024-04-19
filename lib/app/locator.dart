@@ -10,5 +10,7 @@ class SetUpLocators {
 
   static Future<void> init() async {
     setUpOnboardingLocator();
+
+    setOrderLocator();
   }
 }

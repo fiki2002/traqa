@@ -13,7 +13,8 @@ mixin BaseRepoImpl {
       final result = await action();
       return Right(result);
     } on NoGoogleAccountChosenException {
-      return Either.left(const BaseFailures(message: 'User cancelled operation'));
+      return Either.left(
+          const BaseFailures(message: 'User cancelled operation'));
     } on FirebaseAuthException catch (e) {
       return Either.left(CustomFirebaseException(e.code));
     } on FirebaseException catch (e, s) {
@@ -30,6 +31,29 @@ mixin BaseRepoImpl {
       }
 
       return Left(BaseFailures(message: e.toString()));
+    }
+  }
+
+  Stream<Either<Failure, T>> callStreamAction<T>(
+    Stream<T> Function() action,
+  ) async* {
+    try {
+      final stream = action();
+
+      await for (final result in stream) {
+        yield Right(result);
+      }
+    } on SocketException {
+      yield const Left(SocketFailures(message: ErrorText.noInternet));
+    } on TimeoutException {
+      yield const Left(BaseFailures(message: ErrorText.timeOutError));
+    } catch (e, s) {
+      AppLogger.log(e, s);
+      if (e is BaseFailures) {
+        yield Left(BaseFailures(message: e.message));
+      } else {
+        yield Left(BaseFailures(message: e.toString()));
+      }
     }
   }
 }

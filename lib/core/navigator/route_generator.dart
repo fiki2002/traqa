@@ -19,6 +19,11 @@ class RouteGenerator {
           ),
         );
 
+      case OrderStatusView.route:
+        return pageRoute(
+          const OrderStatusView(),
+        );
+
       default:
         return errorRoute();
     }

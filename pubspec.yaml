@@ -30,8 +30,13 @@ dependencies:
 
   # State management
   provider: ^6.1.2
+
+  # For displaying alerts
   another_flushbar: ^1.12.30
-  ably: ^0.0.3
+
+  # For realtime tracking of order
+  ably_flutter: ^1.2.30
+
 
 dev_dependencies:
   flutter_test:

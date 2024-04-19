@@ -1,2 +1,12 @@
+export 'data/datasource/order_datasource.dart';
+export 'data/repo-impl/order_repository_impl.dart';
+export 'domain/repo/order_repository.dart';
+export 'domain/usecases/connect_to_traqa_channel_usecase.dart';
+export 'domain/usecases/get_order_updates_usecase.dart';
+export 'order_locator.dart';
+export 'presentation/notifier/order_notifier.dart';
+export 'presentation/views/order_status_view.dart';
 export 'presentation/views/order_view.dart';
+export 'presentation/widgets/order_details_tile.dart';
+export 'presentation/widgets/order_tracker.dart';
 export 'presentation/widgets/user_info_header.dart';

@@ -9,14 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.30"
-  ably:
+  ably_flutter:
     dependency: "direct main"
     description:
-      name: ably
-      sha256: "592cedc06a889fd188503e52aeeb3e0c6b6b8fc4da930701835b1b6526b4ba11"
+      name: ably_flutter
+      sha256: "5a4855d7e6a3aca29ae7cd6c35d9f29e7e5c131262a0b8be4c6d6bdc123b41ea"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.3"
+    version: "1.2.30"
   another_flushbar:
     dependency: "direct main"
     description:
