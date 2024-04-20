@@ -14,7 +14,7 @@ class OnboardingCarousel extends StatelessWidget {
         autoPlay: true,
         viewportFraction: 1,
         height: screenHeight,
-        autoPlayInterval: Duration(seconds: kSize5.toInt()),
+        autoPlayInterval: duration2s,
       ),
       itemBuilder: (context, index, realIndex) {
         return onboardingImages[index];

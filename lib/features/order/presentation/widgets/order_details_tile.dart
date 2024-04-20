@@ -7,7 +7,7 @@ class OrderDetailsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        height: screenHeight * .2,
+        height: screenHeight * .25,
         padding: EdgeInsets.symmetric(
           horizontal: w(kfsMedium),
           vertical: h(kfsMedium),
@@ -44,6 +44,16 @@ class OrderDetailsTile extends StatelessWidget {
                 const _Tile(
                   title: 'Order Date:',
                   subtitle: '03/05/24',
+                ),
+                vSpace(kSize5),
+                const _Tile(
+                  title: 'Price:',
+                  subtitle: '\u20A6 9,800',
+                ),
+                vSpace(kSize5),
+                const _Tile(
+                  title: 'Quantity:',
+                  subtitle: '5',
                 ),
                 vSpace(kSize5),
                 const _Tile(
