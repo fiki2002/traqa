@@ -4,6 +4,11 @@
 Traqa is a simple order tracking app that makes use of [Firebase Auth](https://console.firebase.google.com/u/0/) and the [Ably Realtime](https://ably.com/) services. It provides a seamless user interaction and an aesthetically pleasing interface.
 ## Preview
 
+
+https://github.com/fiki2002/traqa/assets/85044009/ff28edde-6a34-4353-a8c9-8bac7c7d504d
+
+
+
 ## Key Features
 
 - Sign in with Google
@@ -12,21 +17,10 @@ Traqa is a simple order tracking app that makes use of [Firebase Auth](https://c
 
 ## Installation
 
- - You can download the apk to your Android device from [here](https://drive.google.com/file/d/1EKrN5gCQty5Vt4Vq49tUK7qB3lPST_1C/view?usp=sharing)
+ - You can download the apk to your Android device from [here](https://drive.google.com/file/d/1q0A9_E7Q_yh2pIhFKnSAzrbcE8IlUcL-/view?usp=sharing)
 
  To run **Traqa** from the Codebase,
  you need to get an ABLY API key from [here](https://ably.com) you will have to create an account, if you don't have one.
-
-Once you have the API Key, you can create a keys.dart file, locate the `/lib/core/utils/` and create the file under it
-
-Add the following:
-```dart
-const String _ablyApiKey =
-    'YOUR API KEY';
-
-String get ablyApiKey => _ablyApiKey;
-
-```
 
 Proceed to run `flutter pub get`, so as to fetch all dependencies.
 
@@ -38,13 +32,14 @@ flutter pub get
 With all these in place, you can 
 
 ```dart
-flutter run
-```
 
+flutter run --dart-define=ABLY_API_KEY=YOUR-API-KEY
+
+```
 
 ## How to send a message from Ably Dashboard
 
-**NOTE:** To do this you can either have the [APK] (https://drive.google.com/file/d/1EKrN5gCQty5Vt4Vq49tUK7qB3lPST_1C/view?usp=sharing) or you already have the app running on your PC.
+**NOTE:** To do this you can either have the [APK] (https://drive.google.com/file/d/1q0A9_E7Q_yh2pIhFKnSAzrbcE8IlUcL-/view?usp=sharing) or you already have the app running on your PC.
 
 - Login into your [Ably Account](https://ably.com/)
 - You should have an app created after login
