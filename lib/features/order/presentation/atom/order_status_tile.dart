@@ -71,7 +71,7 @@ class OrderStatusTile extends StatelessWidget {
                   duration: duration300ms,
                   opacity: isActive ? 1 : 0,
                   child: TextWidget(
-                    viewModel.$2 ?? '',
+                    viewModel.$2 ?? '10:00 AM',
                     fontSize: kfsVeryTiny,
                     textColor: kText2Color,
                   ),
