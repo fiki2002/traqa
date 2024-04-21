@@ -15,4 +15,11 @@ class AuthRepoImpl extends AuthRepository with BaseRepoImpl {
       () => _authDataSource.signInWithGoogle(),
     );
   }
+
+  @override
+  Future<Either<Failure, bool>> isUserAuthenticated() {
+    return callAction(
+      () => _authDataSource.isUserAuthenticated(),
+    );
+  }
 }

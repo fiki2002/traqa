@@ -50,17 +50,17 @@ class OrderNotifier extends ChangeNotifier {
           (Message? r) {
             AppLogger.log(r);
             if (r != null) {
-              final message = r.data as String;
+              final message = (r.data) as String;
 
               if (message.isNotEmpty) {
                 _orderStatus = stringToOrderStatus(message);
                 _time = DateFormat('hh:mm a').format(r.timestamp!);
+                notifyListeners();
               } else {
                 _orderStatus = OrderTrackerState.orderPlaced;
+                notifyListeners();
               }
             }
-
-            notifyListeners();
           },
         );
       },

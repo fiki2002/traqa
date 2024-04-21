@@ -11,10 +11,10 @@ class OrderStatusTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<OrderNotifier>(
+    return Selector<OrderNotifier, (OrderTrackerState, String)>(
       builder: (_, viewModel, __) {
-        final bool isActive = viewModel.orderStatus.isGreater(step) ||
-            viewModel.orderStatus == step;
+        final bool isActive =
+            viewModel.$1.isGreater(step) || viewModel.$1 == step;
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +71,7 @@ class OrderStatusTile extends StatelessWidget {
                   duration: duration300ms,
                   opacity: isActive ? 1 : 0,
                   child: TextWidget(
-                    viewModel.stageTime,
+                    viewModel.$2,
                     fontSize: kfsVeryTiny,
                     textColor: kText2Color,
                   ),
@@ -101,6 +101,7 @@ class OrderStatusTile extends StatelessWidget {
           ],
         );
       },
+      selector: (_, viewModel) => (viewModel.orderStatus, viewModel.stageTime),
     );
   }
 }

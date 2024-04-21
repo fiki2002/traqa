@@ -1,5 +1,4 @@
 import 'package:traqa/core/core.dart';
-import 'package:traqa/core/utils/sizer.dart';
 import 'package:traqa/features/features.dart';
 
 class OrderStatusView extends StatelessWidget {

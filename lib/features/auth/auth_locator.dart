@@ -27,6 +27,7 @@ void setUpAuthLocator() {
   getIt.registerLazySingleton<AuthNotifier>(
     () => AuthNotifier(
       signInWithGoogleUsecase: getIt<SignInWithGoogleUsecase>(),
+      isUserAuthenticatedUsecase: getIt<IsUserAuthenticatedUsecase>(),
     ),
   );
 }

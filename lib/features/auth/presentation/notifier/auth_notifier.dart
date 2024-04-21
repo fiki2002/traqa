@@ -4,9 +4,12 @@ import 'package:traqa/features/features.dart';
 
 class AuthNotifier extends ChangeNotifier {
   final SignInWithGoogleUsecase _signInWithGoogleUsecase;
+  final IsUserAuthenticatedUsecase _isUserAuthenticatedUsecase;
   AuthNotifier({
     required SignInWithGoogleUsecase signInWithGoogleUsecase,
-  }) : _signInWithGoogleUsecase = signInWithGoogleUsecase;
+    required IsUserAuthenticatedUsecase isUserAuthenticatedUsecase,
+  })  : _signInWithGoogleUsecase = signInWithGoogleUsecase,
+        _isUserAuthenticatedUsecase = isUserAuthenticatedUsecase;
 
   TraqaUserEntity? _user;
   TraqaUserEntity? get user => _user;
@@ -37,6 +40,20 @@ class AuthNotifier extends ChangeNotifier {
           OrderView.route,
           arguments: r.user,
         );
+      },
+    );
+  }
+
+  bool _isAuthenticated = false;
+  bool get isAuthenticated => _isAuthenticated;
+
+  void checkForAuthState() async {
+    final res = await _isUserAuthenticatedUsecase(const NoParams());
+    res.fold(
+      (l) {},
+      (r) {
+        _isAuthenticated = r;
+        notifyListeners();
       },
     );
   }

@@ -29,7 +29,7 @@ class _AnimatedTrail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<OrderNotifier>(
+    return Selector<OrderNotifier, (OrderTrackerState, double)>(
       builder: (_, viewModel, __) {
         return SizedBox(
           height: h(kfs32),
@@ -46,15 +46,14 @@ class _AnimatedTrail extends StatelessWidget {
                 child: AnimatedContainer(
                   duration: duration300ms,
                   height: h(3),
-                  width:
-                      viewModel.calculateContainerWidth(viewModel.orderStatus),
+                  width: viewModel.$2,
                   decoration: const BoxDecoration(
                     color: kPrimaryColor,
                   ),
                 ),
               ),
               AnimatedPositioned(
-                left: switch (viewModel.orderStatus) {
+                left: switch (viewModel.$1) {
                   OrderTrackerState.orderPlaced => 0,
                   OrderTrackerState.orderAccepted => screenWidth / 5,
                   OrderTrackerState.orderPickUpInProgress => screenWidth / 4,
@@ -74,6 +73,10 @@ class _AnimatedTrail extends StatelessWidget {
           ),
         );
       },
+      selector: (_, viewModel) => (
+        viewModel.orderStatus,
+        viewModel.calculateContainerWidth(viewModel.orderStatus),
+      ),
     );
   }
 }

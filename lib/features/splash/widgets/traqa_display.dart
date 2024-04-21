@@ -39,7 +39,7 @@ class _TraqDisplayState extends State<TraqDisplay>
         setState(() => text = traqa.substring(0, _index));
       },
     );
-    
+
     _initScaleAnimation();
 
     super.initState();
@@ -99,10 +99,17 @@ class _TraqDisplayState extends State<TraqDisplay>
     _expandAnimation.addStatusListener(
       (status) {
         if (status == AnimationStatus.completed) {
-          clearRoad(OnboardingView.route);
+          final isAuthenticated = context.auth.isAuthenticated;
+          if (isAuthenticated) {
+            clearRoad(OrderView.route);
+          } else {
+            clearRoad(OnboardingView.route);
+          }
         }
       },
     );
+
+    context.auth.checkForAuthState();
   }
 
   @override

@@ -5,6 +5,7 @@ import 'package:traqa/features/features.dart';
 
 abstract interface class AuthDataSource {
   Future<AuthModel> signInWithGoogle();
+  Future<bool> isUserAuthenticated();
 }
 
 class AuthDataSourceImpl extends AuthDataSource {
@@ -40,5 +41,10 @@ class AuthDataSourceImpl extends AuthDataSource {
         avatarUrl: userDetailsResponse.user?.photoURL ?? '',
       ),
     );
+  }
+
+  @override
+  Future<bool> isUserAuthenticated() async {
+    return FirebaseAuth.instance.currentUser != null;
   }
 }
