@@ -5,94 +5,68 @@ class OrderDetailsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Container(
-        height: screenHeight * .25,
-        padding: EdgeInsets.symmetric(
-          horizontal: w(kfsMedium),
-          vertical: h(kfsMedium),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const TextWidget(
+          'Your Order',
+          fontSize: kfsMedium,
+          fontWeight: w600,
         ),
-        decoration: BoxDecoration(
-          color: kPrimaryColor.withOpacity(.2),
-          borderRadius: BorderRadius.circular(
-            sr(kfsMedium),
-          ),
-        ),
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(sr(kMinute)),
-              child: Image.asset(
-                spaghettiImage,
-              ),
-            ),
-            hSpace(kMinute),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const TextWidget(
-                  'Spaghetti bolognese',
-                  fontWeight: w700,
-                  fontSize: kfsMedium,
-                ),
-                vSpace(kSize5),
-                const _Tile(
-                  title: 'Order ID:',
-                  subtitle: '#123456',
-                ),
-                vSpace(kSize5),
-                const _Tile(
-                  title: 'Order Date:',
-                  subtitle: '03/05/24',
-                ),
-                vSpace(kSize5),
-                const _Tile(
-                  title: 'Price:',
-                  subtitle: '\u20A6 9,800',
-                ),
-                vSpace(kSize5),
-                const _Tile(
-                  title: 'Quantity:',
-                  subtitle: '5',
-                ),
-                vSpace(kSize5),
-                const _Tile(
-                  title: 'Order Type:',
-                  subtitle: 'Instant',
-                ),
-                vSpace(kMinute),
-                const TextWidget(
-                  'Tap to view more details',
-                  textColor: kBlack,
-                  decoration: TextDecoration.underline,
-                )
-              ],
-            ),
-          ],
-        ),
-      ),
+        vSpace(kfsMedium),
+        const _OrderTile(),
+      ],
     );
   }
 }
 
-class _Tile extends StatelessWidget {
-  const _Tile({
-    required this.title,
-    required this.subtitle,
-  });
-  final String title;
-  final String subtitle;
+class _OrderTile extends StatelessWidget {
+  const _OrderTile();
+
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextWidget(
-          title,
-          fontWeight: w600,
-          textColor: kText2Color,
+        ClipRRect(
+          borderRadius: BorderRadius.circular(
+            sr(kfsVeryTiny),
+          ),
+          child: Image.asset(
+            spaghettiImage,
+            height: h(kfs100),
+            width: w(110),
+            fit: BoxFit.cover,
+          ),
         ),
-        hSpace(kMinute),
-        TextWidget(subtitle),
+        hSpace(kfsVeryTiny),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const TextWidget(
+              'Spaghetti Bolognese',
+              fontWeight: w500,
+              fontSize: kfsMedium,
+            ),
+            vSpace(kSize5),
+            const TextWidget(
+              'Chicken and salad',
+              textColor: kText2Color,
+            ),
+            vSpace(kfsVeryTiny),
+            const RichTextWidget(
+              text: 'Quantity: ',
+              text2: '2',
+              textColor: kText2Color,
+            ),
+            vSpace(kfsVeryTiny),
+            const TextWidget(
+              '\u20A6 5,000.00',
+              fontWeight: w500,
+              fontSize: kfsMedium,
+            )
+          ],
+        ),
       ],
     );
   }

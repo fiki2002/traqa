@@ -39,6 +39,7 @@ class _TraqDisplayState extends State<TraqDisplay>
         setState(() => text = traqa.substring(0, _index));
       },
     );
+    
     _initScaleAnimation();
 
     super.initState();

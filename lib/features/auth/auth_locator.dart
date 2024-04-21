@@ -2,7 +2,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:traqa/core/core.dart';
 import 'package:traqa/features/features.dart';
 
-void setUpOnboardingLocator() {
+void setUpAuthLocator() {
   /// DataSource
   getIt.registerLazySingleton<AuthDataSource>(
     () => AuthDataSourceImpl(

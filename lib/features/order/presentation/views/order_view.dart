@@ -30,7 +30,7 @@ class _OrderViewState extends State<OrderView> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           UserInfoHeader(user: widget.user),
-          verticalGap(screenHeight * .05),
+          vSpace(kfsExtraLarge),
           const OrderTracker(),
           vSpace(kfsExtraLarge),
           const OrderDetailsTile(),

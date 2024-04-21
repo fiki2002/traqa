@@ -16,7 +16,7 @@ class OrderRepositoryImpl extends OrderRepository with BaseRepoImpl {
   }
 
   @override
-  Stream<Message> getOrderUpdates() {
-    return _orderDataSource.getOrderUpdates();
+  Stream<Either<Failure, Message>> getOrderUpdates() {
+    return callStreamAction(() => _orderDataSource.getOrderUpdates());
   }
 }

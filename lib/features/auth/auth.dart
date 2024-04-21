@@ -6,7 +6,7 @@ export 'domain/entity/auth_entity.dart';
 export 'domain/entity/user_entity.dart';
 export 'domain/repo/auth_repo.dart';
 export 'domain/usecase/sign_in_with_google_usecase.dart';
-export 'onboarding_locator.dart';
+export 'auth_locator.dart';
 export 'presentation/atoms/button.dart';
 export 'presentation/notifier/auth_notifier.dart';
 export 'presentation/view/onboarding_view.dart';

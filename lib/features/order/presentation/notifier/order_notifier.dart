@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:ably_flutter/ably_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:traqa/core/core.dart';
 import 'package:traqa/features/features.dart';
 
@@ -30,18 +32,37 @@ class OrderNotifier extends ChangeNotifier {
     );
   }
 
+  static final DateTime _now = DateTime.now();
+
+  String _time = DateFormat('hh:mm a').format(_now);
+  String get stageTime => _time;
+
   void _getOrderUpdates() {
-    final res = _getOrderUpdatesUsecase();
+    final res = _getOrderUpdatesUsecase(const NoParams());
 
     res.listen(
       (event) {
-        final message = event.data as String;
-        if (message.isNotEmpty) {
-          _orderStatus = stringToOrderStatus(message);
-          notifyListeners();
-        } else {
-          _orderStatus = OrderTrackerState.orderPlaced;
-        }
+        event.fold(
+          (Failure l) {
+            _orderStatus = OrderTrackerState.unknown;
+            notifyListeners();
+          },
+          (Message? r) {
+            AppLogger.log(r);
+            if (r != null) {
+              final message = r.data as String;
+
+              if (message.isNotEmpty) {
+                _orderStatus = stringToOrderStatus(message);
+                _time = DateFormat('hh:mm a').format(r.timestamp!);
+              } else {
+                _orderStatus = OrderTrackerState.orderPlaced;
+              }
+            }
+
+            notifyListeners();
+          },
+        );
       },
       cancelOnError: true,
       onError: (error) {
@@ -49,89 +70,24 @@ class OrderNotifier extends ChangeNotifier {
       },
     );
   }
-}
 
-enum OrderTrackerState {
-  orderPlaced,
-  orderAccepted,
-  orderPickUpInProgress,
-  orderOnTheWayToCustomer,
-  orderArrived,
-  orderDelivered,
-  unknown,
-}
-
-OrderTrackerState stringToOrderStatus(String value) {
-  switch (value) {
-    case 'order_placed':
-      return OrderTrackerState.orderPlaced;
-    case 'order_accepted':
-      return OrderTrackerState.orderAccepted;
-    case 'order_pick_up_in_progress':
-      return OrderTrackerState.orderPickUpInProgress;
-    case 'order_on_the_way_to_customer':
-      return OrderTrackerState.orderOnTheWayToCustomer;
-    case 'order_arrived':
-      return OrderTrackerState.orderArrived;
-    case 'order_delivered':
-      return OrderTrackerState.orderDelivered;
-    default:
-      return OrderTrackerState.orderPlaced;
-  }
-}
-
-extension OrderStatusExtension on OrderTrackerState {
-  bool isGreater(OrderTrackerState other) {
-    final orderMap = {
-      OrderTrackerState.unknown: 0,
-      OrderTrackerState.orderPlaced: 1,
-      OrderTrackerState.orderAccepted: 2,
-      OrderTrackerState.orderPickUpInProgress: 3,
-      OrderTrackerState.orderOnTheWayToCustomer: 4,
-      OrderTrackerState.orderArrived: 5,
-      OrderTrackerState.orderDelivered: 6,
-    };
-
-    final int thisOrder = orderMap[this] ?? -1;
-    final int otherOrder = orderMap[other] ?? -1;
-    return thisOrder > otherOrder;
-  }
-
-  String get title {
-    switch (this) {
+  double calculateContainerWidth(OrderTrackerState orderStatus) {
+    double stepWidth = (screenWidth / 6) - 32;
+    switch (orderStatus) {
       case OrderTrackerState.orderPlaced:
-        return 'Your Order has been placed😀';
+        return 0;
       case OrderTrackerState.orderAccepted:
-        return 'Your order has been accepted and is been processed💯';
+        return stepWidth * 2.5;
       case OrderTrackerState.orderPickUpInProgress:
-        return 'Your order has been picked up😎';
+        return stepWidth * 3.5;
       case OrderTrackerState.orderOnTheWayToCustomer:
-        return 'Your order is on the way to you🚗';
+        return stepWidth * 4.5;
       case OrderTrackerState.orderArrived:
-        return 'Your order has arrived at your location💃';
+        return stepWidth * 6.5;
       case OrderTrackerState.orderDelivered:
-        return 'Your order has been delivered!🥳';
-      case OrderTrackerState.unknown:
-        return 'Unknown Order Status';
-    }
-  }
-
-  String get description {
-    switch (this) {
-      case OrderTrackerState.orderPlaced:
-        return 'Your order has been successfully placed. We are preparing your items with care.';
-      case OrderTrackerState.orderAccepted:
-        return 'Great news! Your order has been accepted, and we are getting it ready for you.';
-      case OrderTrackerState.orderPickUpInProgress:
-        return 'Our team is currently picking up your order. Rest assured, it will be on its way to you soon!';
-      case OrderTrackerState.orderOnTheWayToCustomer:
-        return 'Exciting news! Your order is now on its way to you. We appreciate your patience.';
-      case OrderTrackerState.orderArrived:
-        return 'Hooray! Your order has arrived at its destination. We hope you enjoy your items!';
-      case OrderTrackerState.orderDelivered:
-        return 'Congratulations! Your order has been successfully delivered. We hope you love your purchase!';
-      case OrderTrackerState.unknown:
-        return 'We couldn\'t determine the status of your order at the moment. Please contact customer support for assistance.';
+        return screenWidth;
+      default:
+        return 0;
     }
   }
 }

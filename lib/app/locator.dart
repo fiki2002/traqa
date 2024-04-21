@@ -9,7 +9,7 @@ class SetUpLocators {
   factory SetUpLocators() => _instance;
 
   static Future<void> init() async {
-    setUpOnboardingLocator();
+    setUpAuthLocator();
 
     setOrderLocator();
   }

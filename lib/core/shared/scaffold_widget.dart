@@ -10,7 +10,7 @@ class ScaffoldWidget extends StatelessWidget {
     this.appBar,
     this.usePadding = true,
     required this.useSingleScroll,
-    this.bg = kWhiteColor,
+    this.bg = kBg1,
     this.scaffoldKey,
     this.controller,
     this.scrollPhysics,

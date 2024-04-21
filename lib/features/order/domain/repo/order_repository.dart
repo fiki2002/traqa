@@ -4,5 +4,5 @@ import 'package:traqa/core/core.dart';
 
 abstract class OrderRepository {
   Future<Either<Failure, void>> getChannel();
-  Stream<Message> getOrderUpdates();
+  Stream<Either<Failure, Message>> getOrderUpdates();
 }

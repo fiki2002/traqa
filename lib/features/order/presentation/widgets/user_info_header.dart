@@ -15,14 +15,13 @@ class UserInfoHeader extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextWidget(
-              user.fullName,
-              fontWeight: w600,
+            const TextWidget(
+              'Hello,',
             ),
             TextWidget(
-              user.email,
-              fontSize: kfsVeryTiny,
-              textColor: kText2Color,
+              user.fullName.capitalize(),
+              fontSize: kfsMedium,
+              fontWeight: w600,
             ),
           ],
         ),

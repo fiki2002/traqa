@@ -6,7 +6,7 @@ class TextWidget extends StatelessWidget {
     this.text, {
     super.key,
     this.fontSize = kfsTiny,
-    this.textColor = kText1Color,
+    this.textColor = kBlack,
     this.fontWeight = w400,
     this.textAlign = TextAlign.start,
     this.maxLines,
@@ -41,7 +41,8 @@ class TextWidget extends StatelessWidget {
         text,
         style: TextStyle(
           fontSize: sp(fontSize!),
-          fontFamily: fontFamily ?? (isShantell ? 'Shantell Sans' : 'Poppins'),
+          fontFamily:
+              fontFamily ?? (isShantell ? 'Shantell Sans' : 'Avenir Next'),
           color: textColor,
           fontWeight: fontWeight,
           fontStyle: fontStyle,
@@ -64,8 +65,8 @@ class RichTextWidget extends StatelessWidget {
     required this.text2,
     this.fontSize = kfsTiny,
     this.fontSize2 = kfsTiny,
-    this.textColor = kText1Color,
-    this.textColor2 = kText1Color,
+    this.textColor = kBlack,
+    this.textColor2 = kBlack,
     this.textColor3,
     this.fontWeight = w400,
     this.fontWeight2 = w400,
@@ -114,7 +115,8 @@ class RichTextWidget extends StatelessWidget {
           fontSize: sp(fontSize!),
           color: textColor,
           fontWeight: fontWeight,
-          fontFamily: fontFamily ?? (isShantell ? 'Shantell Sans' : 'Poppins'),
+          fontFamily:
+              fontFamily ?? (isShantell ? 'Shantell Sans' : 'Avenir Next'),
           overflow: overflow,
         ),
         children: <InlineSpan>[
@@ -125,7 +127,7 @@ class RichTextWidget extends StatelessWidget {
               fontSize: sp(fontSize2!),
               color: textColor2,
               fontFamily:
-                  fontFamily ?? (isShantell ? 'Shantell Sans' : 'Poppins'),
+                  fontFamily ?? (isShantell ? 'Shantell Sans' : 'Avenir Next'),
               fontWeight: fontWeight2,
               decoration: decoration2,
             ),
@@ -136,7 +138,7 @@ class RichTextWidget extends StatelessWidget {
               fontSize: sp(fontSize!),
               color: textColor3,
               fontFamily:
-                  fontFamily ?? (isShantell ? 'Shantell Sans' : 'Poppins'),
+                  fontFamily ?? (isShantell ? 'Shantell Sans' : 'Avenir Next'),
               fontWeight: fontWeight,
             ),
           ),
@@ -146,7 +148,8 @@ class RichTextWidget extends StatelessWidget {
             style: TextStyle(
               fontSize: sp(fontSize2!),
               color: textColor2,
-              fontFamily: fontFamily ?? (isShantell ? 'Inter' : 'Poppins'),
+              fontFamily:
+                  fontFamily ?? (isShantell ? 'Shantell Sans' : 'Poppins'),
               fontWeight: fontWeight2,
               decoration: decoration4,
             ),

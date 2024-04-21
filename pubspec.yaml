@@ -37,6 +37,12 @@ dependencies:
   # For realtime tracking of order
   ably_flutter: ^1.2.30
 
+  # Date time formatting
+  intl: ^0.19.0
+
+  # For rendering SVGs
+  flutter_svg: ^2.0.10+1
+
 
 dev_dependencies:
   flutter_test:
@@ -55,8 +61,17 @@ flutter:
   fonts:
     - family: Shantell Sans
       fonts:
-        - asset: assets/fonts/ShantellSans-Regular.ttf
-        - asset: assets/fonts/ShantellSans-Italic.ttf
-          style: italic
+        - asset: assets/fonts/shantell/ShantellSans-Regular.ttf
+
+    - family: Avenir Next
+      fonts:
+        - asset: assets/fonts/avenir/AvenirNextCyr-Bold.ttf        
+        - asset: assets/fonts/avenir/AvenirNextCyr-Heavy.ttf        
+        - asset: assets/fonts/avenir/AvenirNextCyr-Light.ttf        
+        - asset: assets/fonts/avenir/AvenirNextCyr-Medium.ttf        
+        - asset: assets/fonts/avenir/AvenirNextCyr-Regular.ttf        
+        - asset: assets/fonts/avenir/AvenirNextCyr-Thin.ttf        
+        - asset: assets/fonts/avenir/AvenirNextCyr-UltraLight.ttf        
+
 
   
