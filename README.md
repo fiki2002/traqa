@@ -1,31 +1,63 @@
-# Traqa
 
-Please read the steps below
+# Traqa 
 
-# How to set up the Project
+Traqa is a simple order tracking app that makes use of [Firebase Auth](https://console.firebase.google.com/u/0/) and the [Ably Realtime](https://ably.com/) services. It provides a seamless user interaction and an aesthetically pleasing interface.
+## Preview
 
-Create a `keys.dart` file in the `/lib/core/utils/`folder 
 
-``` dart
+https://github.com/fiki2002/traqa/assets/85044009/ff28edde-6a34-4353-a8c9-8bac7c7d504d
 
-const String _ablyApiKey =
-    'TMhTAA.a_X_9Q:...';
 
-String get ablyApiKey => _ablyApiKey;
+
+## Key Features
+
+- Sign in with Google
+- Persistent sign in
+- Realtime order tracking
+
+## Installation
+
+ - You can download the apk to your Android device from [here](https://drive.google.com/file/d/1q0A9_E7Q_yh2pIhFKnSAzrbcE8IlUcL-/view?usp=sharing)
+
+ To run **Traqa** from the Codebase,
+ you need to get an ABLY API key from [here](https://ably.com) you will have to create an account, if you don't have one.
+
+Proceed to run `flutter pub get`, so as to fetch all dependencies.
 
 ```
-And that's all that is needed!
+flutter pub get
 
-# How to send a message from Ably Console
-- Make sure you have created an App already.
+```
+
+With all these in place, you can 
+
+```dart
+
+flutter run --dart-define=ABLY_API_KEY=YOUR-API-KEY
+
+```
+
+## How to send a message from Ably Dashboard
+
+**NOTE:** To do this you can either have the [APK] (https://drive.google.com/file/d/1q0A9_E7Q_yh2pIhFKnSAzrbcE8IlUcL-/view?usp=sharing) or you already have the app running on your PC.
+
+- Login into your [Ably Account](https://ably.com/)
+- You should have an app created after login
   
-- Login to your Ably Dev Console and navigate to the `Dev Console` section
+  <img width="1341" alt="Screenshot 2024-04-21 at 12 57 51" src="https://github.com/fiki2002/traqa/assets/85044009/7976a934-10c4-4192-984b-2d9786781fed">
 
-- Next scroll to the Channels section and click Add Channel.
+- Navigate to the Dev Console tab, like so
 
-  **Note:** Use the channel name `traqa` Please be sure you use the channel name `traqa` 
+  <img width="1036" alt="Screenshot 2024-04-21 at 12 56 07" src="https://github.com/fiki2002/traqa/assets/85044009/4326542b-6f80-4f97-abc6-71ac6141028a">
 
-- Now that you have connected to the channel, the possible order status is below.
+- Locate the attach channel button, and enter `traqa`, which is the channel name for this project
+
+<img width="1208" alt="Screenshot 2024-04-21 at 13 00 41" src="https://github.com/fiki2002/traqa/assets/85044009/bf4b24e8-bb76-4858-bb7a-93d01e719286">
+  
+- Find the publish message section and input the following possible order status 
+
+<img width="1127" alt="Screenshot 2024-04-21 at 13 02 38" src="https://github.com/fiki2002/traqa/assets/85044009/ba339d36-02fa-49e7-8271-4f6ef1bcbeac">
+
   ```
   order_placed,
   order_accepted,
@@ -34,9 +66,11 @@ And that's all that is needed!
   order_arrived,
   order_delivered
   ```
+
+  where
   
   ``` dart
-  switch (value) {
+  switch (message) {
     case 'order_placed':
       return OrderStatus.orderPlaced;
     case 'order_accepted':
@@ -53,45 +87,7 @@ And that's all that is needed!
       return OrderStatus.unknown;
   }
   ```
-You can send any of the order statuses as a message by entering any one of them in the Message data field and clicking the publish Message button. 
+  
+into the **Message data** field, then proceed to publish.
 
-You should be able to see the status update in real time in the app.
-
-Link to APK: [Traqa](https://drive.google.com/file/d/1Loy8meIgCVeCQKoBt50-hCCpHCmMg9I6/view?usp=sharing)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Voila!, it would be updated on the app.
