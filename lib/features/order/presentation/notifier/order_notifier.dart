@@ -4,6 +4,7 @@ import 'package:ably_flutter/ably_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:traqa/core/core.dart';
 import 'package:traqa/features/features.dart';
+import 'package:traqa/features/order/order.dart';
 
 class OrderNotifier extends ChangeNotifier {
   final ConnectToTraqaChannelUsecase _connectToTraqaChannelUsecase;
@@ -15,9 +16,12 @@ class OrderNotifier extends ChangeNotifier {
   })  : _connectToTraqaChannelUsecase = connectToTraqaChannelUsecase,
         _getOrderUpdatesUsecase = getOrderUpdatesUsecase;
 
-  OrderTrackerState _orderStatus = OrderTrackerState.orderPlaced;
-
-  OrderTrackerState get orderStatus => _orderStatus;
+  /// To keep track of each order time
+  String? _orderAcceptedTime;
+  String? _orderPickUpInProgressTime;
+  String? _orderOnTheWayToCustomerTime;
+  String? _orderArrivedTime;
+  String? _orderDeliveredTime;
 
   Future<void> connectToTraqaChannel() async {
     final res = await _connectToTraqaChannelUsecase(const NoParams());
@@ -32,10 +36,9 @@ class OrderNotifier extends ChangeNotifier {
     );
   }
 
-  static final DateTime _now = DateTime.now();
+  OrderTrackerState _orderStatus = OrderTrackerState.orderPlaced;
 
-  String _time = DateFormat('hh:mm a').format(_now);
-  String get stageTime => _time;
+  OrderTrackerState get orderStatus => _orderStatus;
 
   void _getOrderUpdates() {
     final res = _getOrderUpdatesUsecase(const NoParams());
@@ -54,8 +57,9 @@ class OrderNotifier extends ChangeNotifier {
 
               if (message.isNotEmpty) {
                 _orderStatus = stringToOrderStatus(message);
-                _time = DateFormat('hh:mm a').format(r.timestamp!);
                 notifyListeners();
+
+                _setStageTime(DateFormat('hh:mm a').format(r.timestamp!));
               } else {
                 _orderStatus = OrderTrackerState.orderPlaced;
                 notifyListeners();
@@ -71,9 +75,9 @@ class OrderNotifier extends ChangeNotifier {
     );
   }
 
-  double calculateContainerWidth(OrderTrackerState orderStatus) {
+  double calculateContainerWidth() {
     double stepWidth = (screenWidth / 6) - 32;
-    switch (orderStatus) {
+    switch (_orderStatus) {
       case OrderTrackerState.orderPlaced:
         return 0;
       case OrderTrackerState.orderAccepted:
@@ -88,6 +92,52 @@ class OrderNotifier extends ChangeNotifier {
         return screenWidth;
       default:
         return 0;
+    }
+  }
+
+  String? getStageTime(OrderTrackerState status) {
+    switch (status) {
+      case OrderTrackerState.orderPlaced:
+        return '10:00 AM';
+      case OrderTrackerState.orderAccepted:
+        return _orderAcceptedTime;
+      case OrderTrackerState.orderPickUpInProgress:
+        return _orderPickUpInProgressTime;
+      case OrderTrackerState.orderOnTheWayToCustomer:
+        return _orderOnTheWayToCustomerTime;
+      case OrderTrackerState.orderArrived:
+        return _orderArrivedTime;
+      case OrderTrackerState.orderDelivered:
+        return _orderDeliveredTime;
+      default:
+        return _orderAcceptedTime;
+    }
+  }
+
+  void _setStageTime(String time) {
+    switch (_orderStatus) {
+      case OrderTrackerState.orderAccepted:
+        _orderAcceptedTime = time;
+        notifyListeners();
+        break;
+      case OrderTrackerState.orderPickUpInProgress:
+        _orderPickUpInProgressTime = time;
+        notifyListeners();
+        break;
+      case OrderTrackerState.orderOnTheWayToCustomer:
+        _orderOnTheWayToCustomerTime = time;
+        notifyListeners();
+        break;
+      case OrderTrackerState.orderArrived:
+        _orderArrivedTime = time;
+        notifyListeners();
+        break;
+      case OrderTrackerState.orderDelivered:
+        _orderDeliveredTime = time;
+        notifyListeners();
+        break;
+      default:
+        break;
     }
   }
 }

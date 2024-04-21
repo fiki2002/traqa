@@ -44,7 +44,7 @@ class OrderStatusView extends StatelessWidget {
           ...stages.map(
             (p0) => OrderStatusTile(step: p0),
           ),
-          verticalGap(screenHeight * .02),
+          verticalGap(screenHeight * .05),
         ],
       ),
       useSingleScroll: true,

@@ -11,7 +11,7 @@ class OrderStatusTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<OrderNotifier, (OrderTrackerState, String)>(
+    return Selector<OrderNotifier, (OrderTrackerState, String?)>(
       builder: (_, viewModel, __) {
         final bool isActive =
             viewModel.$1.isGreater(step) || viewModel.$1 == step;
@@ -71,7 +71,7 @@ class OrderStatusTile extends StatelessWidget {
                   duration: duration300ms,
                   opacity: isActive ? 1 : 0,
                   child: TextWidget(
-                    viewModel.$2,
+                    viewModel.$2 ?? '',
                     fontSize: kfsVeryTiny,
                     textColor: kText2Color,
                   ),
@@ -79,29 +79,29 @@ class OrderStatusTile extends StatelessWidget {
               ],
             ),
             if (step != OrderTrackerState.orderDelivered)
-              AnimatedSwitcher(
-                duration: duration300ms,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    left: screenWidth * .06,
-                    top: h(kSize5),
-                    bottom: w(kMinute),
-                  ),
-                  child: CustomPaint(
-                    size: Size(1, screenWidth * .09),
-                    painter: DottedBorder(
-                      color: switch (isActive) {
-                        true => kPrimaryColor,
-                        false => kBg4,
-                      },
-                    ),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: screenWidth * .06,
+                  top: h(kSize5),
+                  bottom: w(kMinute),
+                ),
+                child: CustomPaint(
+                  size: Size(1, screenWidth * .09),
+                  painter: DottedBorder(
+                    color: switch (isActive) {
+                      true => kPrimaryColor,
+                      false => kBg4,
+                    },
                   ),
                 ),
               ),
           ],
         );
       },
-      selector: (_, viewModel) => (viewModel.orderStatus, viewModel.stageTime),
+      selector: (_, viewModel) => (
+        viewModel.orderStatus,
+        viewModel.getStageTime(step),
+      ),
     );
   }
 }

@@ -75,7 +75,7 @@ class _AnimatedTrail extends StatelessWidget {
       },
       selector: (_, viewModel) => (
         viewModel.orderStatus,
-        viewModel.calculateContainerWidth(viewModel.orderStatus),
+        viewModel.calculateContainerWidth(),
       ),
     );
   }
