@@ -23,6 +23,11 @@ void setUpAuthLocator() {
       authRepository: getIt<AuthRepository>(),
     ),
   );
+  getIt.registerLazySingleton<IsUserAuthenticatedUsecase>(
+    () => IsUserAuthenticatedUsecase(
+      authRepository: getIt<AuthRepository>(),
+    ),
+  );
 
   getIt.registerLazySingleton<AuthNotifier>(
     () => AuthNotifier(

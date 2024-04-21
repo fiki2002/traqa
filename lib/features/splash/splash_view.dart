@@ -9,7 +9,7 @@ class SplashView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const ScaffoldWidget(
       bg: kPrimaryColor,
-      body: TraqDisplay(),
+      body: TraqaDisplay(),
       useSingleScroll: false,
       usePadding: false,
       safeAreaTop: false,

@@ -5,7 +5,7 @@ import 'package:traqa/core/core.dart';
 import 'package:traqa/features/features.dart';
 
 class IsUserAuthenticatedUsecase
-    implements UseCaseFuture<Failure, bool, NoParams> {
+    implements UseCaseFuture<Failure, AuthModel, NoParams> {
   final AuthRepository _authRepository;
 
   const IsUserAuthenticatedUsecase({
@@ -13,7 +13,7 @@ class IsUserAuthenticatedUsecase
   }) : _authRepository = authRepository;
 
   @override
-  Future<Either<Failure, bool>> call(NoParams params) async {
+  Future<Either<Failure, AuthModel>> call(NoParams params) async {
     return await _authRepository.isUserAuthenticated();
   }
 }

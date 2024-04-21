@@ -17,7 +17,7 @@ class AuthRepoImpl extends AuthRepository with BaseRepoImpl {
   }
 
   @override
-  Future<Either<Failure, bool>> isUserAuthenticated() {
+  Future<Either<Failure, AuthModel>> isUserAuthenticated() {
     return callAction(
       () => _authDataSource.isUserAuthenticated(),
     );

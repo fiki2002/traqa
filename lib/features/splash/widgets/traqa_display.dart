@@ -2,14 +2,14 @@ import 'dart:async';
 import 'package:traqa/core/core.dart';
 import 'package:traqa/features/features.dart';
 
-class TraqDisplay extends StatefulWidget {
-  const TraqDisplay({super.key});
+class TraqaDisplay extends StatefulWidget {
+  const TraqaDisplay({super.key});
 
   @override
-  State<TraqDisplay> createState() => _TraqDisplayState();
+  State<TraqaDisplay> createState() => _TraqaDisplayState();
 }
 
-class _TraqDisplayState extends State<TraqDisplay>
+class _TraqaDisplayState extends State<TraqaDisplay>
     with SingleTickerProviderStateMixin {
   late AnimationController _expandController;
   late Animation<double> _expandAnimation;
@@ -23,6 +23,8 @@ class _TraqDisplayState extends State<TraqDisplay>
 
   @override
   void initState() {
+    context.auth.checkForAuthState();
+
     textLength = traqa.length;
     _index = -1;
     isForward = true;
@@ -100,16 +102,18 @@ class _TraqDisplayState extends State<TraqDisplay>
       (status) {
         if (status == AnimationStatus.completed) {
           final isAuthenticated = context.auth.isAuthenticated;
+          final user = context.auth.user;
           if (isAuthenticated) {
-            clearRoad(OrderView.route);
+            clearRoad(
+              OrderView.route,
+              arguments: user,
+            );
           } else {
             clearRoad(OnboardingView.route);
           }
         }
       },
     );
-
-    context.auth.checkForAuthState();
   }
 
   @override

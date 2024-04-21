@@ -52,7 +52,8 @@ class AuthNotifier extends ChangeNotifier {
     res.fold(
       (l) {},
       (r) {
-        _isAuthenticated = r;
+        _isAuthenticated = r.isSuccess;
+        _user = r.user;
         notifyListeners();
       },
     );

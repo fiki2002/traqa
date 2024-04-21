@@ -4,5 +4,5 @@ import 'package:traqa/features/features.dart';
 
 abstract class AuthRepository {
   Future<Either<Failure, AuthEntity>> signInWithGoogle();
-  Future<Either<Failure, bool>> isUserAuthenticated();
+  Future<Either<Failure, AuthModel>> isUserAuthenticated();
 }
