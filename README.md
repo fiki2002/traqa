@@ -4,10 +4,17 @@
 Traqa is a simple order tracking app that makes use of [Firebase Auth](https://console.firebase.google.com/u/0/) and the [Ably Realtime](https://ably.com/) services. It provides a seamless user interaction and an aesthetically pleasing interface.
 ## Preview
 
-
 https://github.com/fiki2002/traqa/assets/85044009/ff28edde-6a34-4353-a8c9-8bac7c7d504d
 
+You can also view the android and iOS previews here:
 
+Android: https://drive.google.com/file/d/1N_sxPCiFtC7HLcqHDW9PfEfcIQYolD6j/view?usp=sharing
+
+iOS: https://drive.google.com/file/d/1K2hJRnw4_xTi4WyjQH3gaH5XVAlGAvnK/view?usp=sharing
+
+## Demo Link
+
+https://drive.google.com/file/d/14v3uv-ysvs4gMX-l9_1KgSDg6_5YJDg9/view?usp=sharing
 
 ## Key Features
 
