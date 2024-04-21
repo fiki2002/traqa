@@ -28,7 +28,9 @@ class OrderNotifier extends ChangeNotifier {
 
     res.fold(
       (l) {
-        Toast.showErrorToast(message: l.message);
+        Toast.showErrorToast(
+          message: 'Something went wrong while connecting to traqa',
+        );
       },
       (r) {
         _getOrderUpdates();

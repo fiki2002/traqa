@@ -22,9 +22,6 @@ Future<dynamic> goReplace(String routeName) {
 Future<dynamic> clearRoad(String routeName, {Object? arguments}) {
   return navigatorKey.currentState!.pushNamedAndRemoveUntil(
     routeName,
-
-    ///similar to (Route route)=> route.settings.name == '/'
-    ///where '/' is the last page.
     ModalRoute.withName('/'),
     arguments: arguments,
   );

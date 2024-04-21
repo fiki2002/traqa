@@ -4,7 +4,7 @@ export 'domain/repo/order_repository.dart';
 export 'domain/usecases/connect_to_traqa_channel_usecase.dart';
 export 'domain/usecases/get_order_updates_usecase.dart';
 export 'order_locator.dart';
-export 'presentation/atom/order_status_tile.dart';
+export 'presentation/widgets/order_status_tile.dart';
 export 'presentation/atom/order_tracker_trail.dart';
 export 'presentation/enum/order_enum.dart';
 export 'presentation/notifier/order_notifier.dart';

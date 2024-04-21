@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:traqa/core/core.dart';
 
-mixin BaseRepoImpl {
+mixin RepositoryExceptionHandler {
   Future<Either<Failure, T>> callAction<T>(
     Future<T> Function() action,
   ) async {
@@ -14,7 +14,10 @@ mixin BaseRepoImpl {
       return Right(result);
     } on NoGoogleAccountChosenException {
       return Either.left(
-          const BaseFailures(message: 'User cancelled operation'));
+        const BaseFailures(
+          message: 'User cancelled operation',
+        ),
+      );
     } on FirebaseAuthException catch (e) {
       return Either.left(CustomFirebaseException(e.code));
     } on FirebaseException catch (e, s) {

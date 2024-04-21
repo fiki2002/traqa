@@ -60,10 +60,14 @@ class _OrderTile extends StatelessWidget {
               textColor: kText2Color,
             ),
             vSpace(kfsVeryTiny),
-            const TextWidget(
-              '\u20A6 5,000.00',
+            const RichTextWidget(
+              text: '\u20A6',
+              fontFamily: '',
+              text2: '5,000.00',
               fontWeight: w500,
+              fontWeight2: w500,
               fontSize: kfsMedium,
+              fontSize2: kfsMedium,
             )
           ],
         ),

@@ -44,7 +44,7 @@ class _AnimatedTrail extends StatelessWidget {
                   color: kBg3,
                 ),
                 child: AnimatedContainer(
-                  duration: duration300ms,
+                  duration: duration1s,
                   height: h(3),
                   width: viewModel.$2,
                   decoration: const BoxDecoration(
@@ -62,7 +62,7 @@ class _AnimatedTrail extends StatelessWidget {
                   OrderTrackerState.orderDelivered => screenWidth / 1.6,
                   _ => 0,
                 },
-                duration: duration300ms,
+                duration: duration1s,
                 child: CircleAvatar(
                   radius: sr(kfsMedium),
                   backgroundColor: kPrimaryColor,

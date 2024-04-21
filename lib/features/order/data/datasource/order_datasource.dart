@@ -1,5 +1,4 @@
 import 'package:ably_flutter/ably_flutter.dart' as ably;
-import 'package:traqa/core/core.dart';
 
 abstract interface class OrderDataSource {
   Future<void> connectToTraqaChannel();
@@ -7,6 +6,8 @@ abstract interface class OrderDataSource {
 }
 
 class OrderDataSourceImpl extends OrderDataSource {
+  final ablyApiKey = const String.fromEnvironment('ABLY_API_KEY');
+
   late final ably.Realtime _ablyRealtime;
   late ably.RealtimeChannel _traqaChannel;
   late final ably.ClientOptions _clientOptions;

@@ -3,7 +3,8 @@ import 'package:fpdart/fpdart.dart';
 import 'package:traqa/core/core.dart';
 import 'package:traqa/features/features.dart';
 
-class OrderRepositoryImpl extends OrderRepository with BaseRepoImpl {
+class OrderRepositoryImpl extends OrderRepository
+    with RepositoryExceptionHandler {
   final OrderDataSource _orderDataSource;
 
   OrderRepositoryImpl({

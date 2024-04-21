@@ -2,7 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:traqa/core/core.dart';
 import 'package:traqa/features/features.dart';
 
-class AuthRepoImpl extends AuthRepository with BaseRepoImpl {
+class AuthRepoImpl extends AuthRepository with RepositoryExceptionHandler {
   final AuthDataSource _authDataSource;
 
   AuthRepoImpl({
