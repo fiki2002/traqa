@@ -14,8 +14,9 @@ class AuthNotifier extends ChangeNotifier {
   TraqaUserEntity? _user;
   TraqaUserEntity? get user => _user;
 
-  void signInWithGoogle() async {
+  Future<void> signInWithGoogle() async {
     _setAuthState(AuthState.loading);
+    
     final res = await _signInWithGoogleUsecase(const NoParams());
 
     res.fold(
